@@ -6,7 +6,7 @@
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-the-betweenlands",
-  "updateUrl": "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-TheBetweenLands/version_info.json?raw=true",
+  "updateUrl": "https://github.com/DynamicTreesTeam/DynamicTreesVersionInfo/blob/master/Add-ons/TheBetweenlands.json?raw=true",
   "authorList": ["Max Hyper"],
   "credits": "Ferreusveritas for Dynamic Trees and Angry Pixel for The Between Lands",
   "logoFile": "",

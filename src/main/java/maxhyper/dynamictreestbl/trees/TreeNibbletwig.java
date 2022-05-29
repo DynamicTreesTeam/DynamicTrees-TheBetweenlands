@@ -38,6 +38,7 @@ public class TreeNibbletwig extends TreeFamily {
 			setSoilLongevity(3);
 
 			setBasicGrowingParameters(0.2f, 20, 10, 4, 0.8f); //
+			setupStandardSeedDropping();
 
 			generateSeed();
 			addAcceptableSoils(DirtHelper.MUDLIKE);
