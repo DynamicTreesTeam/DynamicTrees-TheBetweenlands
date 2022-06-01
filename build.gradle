@@ -17,9 +17,9 @@ repositories {
     }
 }
 
-version = "1.12.2-1.0.2"
-group = "maxhyper.dynamictreestbl" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "DynamicTreesTheBetweenlands"
+version = "$project.mc_version-$project.mod_version"
+group = package_group
+archivesBaseName = mod_name
 
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 compileJava {
@@ -29,7 +29,7 @@ compileJava {
 sourceSets { main { output.resourcesDir = output.classesDir } }
 
 minecraft {
-    mappings channel: 'snapshot', version: '20171003-1.12'
+    mappings channel: 'snapshot', version: project.mappings_version
 
     accessTransformer = file("src/main/resources/dynamictreestbl_at.cfg")
 
@@ -60,7 +60,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
+    minecraft "net.minecraftforge:forge:$project.mc_version-$project.forge_version"
 
     implementation fg.deobf("blank:DynamicTrees-1.12.2-0.9.28")
     implementation fg.deobf("blank:Hwyla-1.8.26-B41_1.12.2")
@@ -69,21 +69,17 @@ dependencies {
 
 }
 
-//processResources {
-//    // this will ensure that this task is redone when the versions change.
-//    inputs.property "version", project.version
-//    inputs.property "mcversion", project.minecraft.version
-//
-//    // replace stuff in mcmod.info, nothing else
-//    from(sourceSets.main.resources.srcDirs) {
-//        include 'mcmod.info'
-//
-//        // replace version and mcversion
-//        expand 'version':project.version, 'mcversion':project.minecraft.version
-//    }
-//
-//    // copy everything else except the mcmod.info
-//    from(sourceSets.main.resources.srcDirs) {
-//        exclude 'mcmod.info'
-//    }
-//}
+processResources {
+    inputs.property "version", project.mod_version
+    inputs.property "mcversion", project.mc_version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        expand 'version':project.mod_version, 'mcversion':project.mc_version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
